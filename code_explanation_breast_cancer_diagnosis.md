@@ -18,11 +18,11 @@ This document provides a thorough explanation of the methodology and rationale b
 
 ### **How Were Ridge and Lasso Implemented?**
 - Both models were trained on standardized features to ensure fair comparison.
-- **Hyperparameter (\(\lambda\) or \(C\))**:
-  - The hyperparameter \(\lambda\) controls the regularization strength. In `scikit-learn`, this is parameterized as \(C = \frac{1}{\lambda}\), where \(C\) is the inverse of regularization strength.
+- **Hyperparameter \(λ\) or \(C\))**:
+  - The hyperparameter \(\lambda\) controls the regularization strength. In `scikit-learn`, this is parameterized as \(C = \frac{1}{λ}\), where \(C\) is the inverse of regularization strength.
   - For this project, \(C = 0.1\) was used for both Ridge and Lasso.
 
-### **How Was \(\lambda\) Chosen?**
+### **How Was \(λ\) Chosen?**
 - A fixed \(C = 0.1\) was selected based on:
   1. **Practical Simplicity**:
      - Small regularization strengths (e.g., \(C = 0.1\)) often perform well for many datasets.
@@ -31,8 +31,8 @@ This document provides a thorough explanation of the methodology and rationale b
      - Higher \(C\) values caused potential overfitting, while very small \(C\) values diminished feature importance.
   3. **Focus on Interpretability**:
      - The primary goal was feature importance analysis rather than hyperparameter optimization.
-- **Why Not Cross-Validation for \(\lambda\)?**
-  - Cross-validation is ideal for optimizing \(\lambda\), but for this project:
+- **Why Not Cross-Validation for \(λ\)?**
+  - Cross-validation is ideal for optimizing \(λ\), but for this project:
     - Simplicity and interpretability were prioritized over hyperparameter tuning.
     - The fixed \(C = 0.1\) provided robust results without additional complexity.
 
