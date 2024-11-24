@@ -86,7 +86,66 @@ This document provides a thorough explanation of the methodology and rationale b
 
 ---
 
-## **5. Key Insights**
+## **5. Classification Reports**
+
+### **1. Understanding the Metrics**
+- **Precision**: Measures how many of the predicted positive cases (e.g., Malignant 'M') were correct.  
+  - High precision means fewer false positives.
+- **Recall**: Measures how many of the actual positive cases were correctly identified.  
+  - High recall means fewer false negatives.
+- **F1-Score**: Harmonic mean of precision and recall, balancing the trade-off between the two.  
+  - A high F1-score indicates a model performs well overall.
+- **Support**: The number of samples in each class (`B` and `M`) in the test set:
+  - `B`: Benign tumors (71 samples).
+  - `M`: Malignant tumors (43 samples).
+- **Accuracy**: Overall percentage of correctly classified samples.  
+  - Calculated as:  
+    \[
+    \text{Accuracy} = \frac{\text{True Positives} + \text{True Negatives}}{\text{Total Samples}}
+    \]
+- **Macro Avg**: Average metrics across classes, treating all classes equally.
+- **Weighted Avg**: Average metrics weighted by the number of samples in each class.
+
+---
+
+### **2. Model Evaluations**
+
+#### **Lasso Regression**
+- **Precision, Recall, and F1-Score**:
+  - Both classes (`B` and `M`) have precision and recall scores above 95%, which is excellent.
+  - The F1-scores are also high at 0.97 for `B` and 0.95 for `M`.
+- **Accuracy**: 96% accuracy indicates the model is robust but slightly less accurate than Ridge Regression.
+- **Interpretation**: Lasso performs well, but some misclassifications might occur due to its regularization shrinking coefficients to zero for less important features.
+
+#### **Ridge Regression**
+- **Precision, Recall, and F1-Score**:
+  - Ridge achieves near-perfect performance with scores of 99-100% across metrics for both classes.
+- **Accuracy**: 99%, indicating only 1-2 misclassifications in the test set.
+- **Interpretation**: Ridge is the best-performing model in this case, likely due to retaining all features (as it penalizes less aggressively than Lasso) and balancing their contributions effectively.
+
+#### **Random Forest**
+- **Precision, Recall, and F1-Score**:
+  - Precision and recall are slightly lower than Ridge but still excellent, particularly for the `M` class (98% precision and 93% recall).
+  - The F1-score is high at 0.95 for `M` and 0.97 for `B`.
+- **Accuracy**: 96%, comparable to Lasso.
+- **Interpretation**: Random Forest performs slightly less accurately than Ridge but still robustly, leveraging its ensemble approach. It might have been affected by random splits or overfitting to some training features.
+
+---
+
+### **3. Key Takeaways**
+- **Ridge Regression**:
+  - Best model in terms of overall accuracy and balanced performance between classes.
+  - Achieves 99% accuracy with minimal trade-offs.
+- **Lasso Regression**:
+  - Slightly less accurate but performs well, particularly in identifying `B` cases.
+  - Its feature selection property can be advantageous when interpretability is critical.
+- **Random Forest**:
+  - A strong model but slightly less consistent than Ridge in this instance.
+  - May benefit from hyperparameter tuning to further optimize its performance.
+
+---
+
+## **6. Key Insights**
 
 ### **Ridge vs. Lasso**
 - **Ridge Regression**:
