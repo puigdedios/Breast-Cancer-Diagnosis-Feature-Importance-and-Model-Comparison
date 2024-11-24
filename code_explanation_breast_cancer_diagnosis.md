@@ -132,7 +132,41 @@ This document provides a thorough explanation of the methodology and rationale b
 
 ---
 
-### **3. Key Takeaways**
+### **3. Dataset Splitting, Test Accuracy, and Generalization**
+
+**Dataset Splitting**:
+- The dataset was split into **80% training data** and **20% test data** using scikit-learn's `train_test_split` function with a fixed random seed (`random_state=42`) to ensure reproducibility.
+- **Training Data** (\(X_{\text{train}}\), \(y_{\text{train}}\)): Used to fit the models and learn from the data.
+- **Test Data** (\(X_{\text{test}}\), \(y_{\text{test}}\)): Completely withheld during training and used to evaluate model performance on unseen samples.
+
+**Test Set Composition**:
+- The test set consists of 114 samples:
+  - **Benign (B)**: 71 samples
+  - **Malignant (M)**: 43 samples
+
+**Model-Specific Test Accuracy**:
+1. **Lasso Regression**:
+   - Accuracy: 96%
+   - Lasso's slightly lower accuracy compared to Ridge is due to its more aggressive feature selection (shrinking some coefficients to zero), which might discard relevant features.
+   - Generalization: Despite this, Lasso generalizes well, as its test accuracy is consistent with expectations for regularized models.
+
+2. **Ridge Regression**:
+   - Accuracy: 99%
+   - Ridge's higher accuracy stems from its ability to retain all features while reducing their magnitude proportionally.
+   - Generalization: Ridge demonstrates excellent generalization, with the test accuracy closely matching the training accuracy, indicating minimal overfitting.
+
+3. **Random Forest Classifier**:
+   - Accuracy: 96%
+   - Random Forest uses an ensemble of decision trees, capturing non-linear relationships in the data. Its performance is comparable to Lasso.
+   - Generalization: Random Forest shows robust generalization, leveraging its ensemble nature to avoid overfitting.
+
+**Generalization Analysis**:
+- The reported accuracies for all models are based on the **test set**, reflecting how well they generalize to unseen data.
+- Regularization in Ridge and Lasso, combined with Random Forest's ensemble approach, ensures that these models do not overfit despite the small dataset size.
+
+---
+
+### **4. Key Takeaways**
 - **Ridge Regression**:
   - Best model in terms of overall accuracy and balanced performance between classes.
   - Achieves 99% accuracy with minimal trade-offs.
