@@ -112,7 +112,11 @@ This analysis demonstrates the power of regularization techniques and ensemble m
 
 ## **How to see results**
 
-To view the analysis and results, open the file breast_cancer_diagnosis.ipynb, which is listed in the repository's file list above.
+To view the code and results, open the file breast_cancer_diagnosis.ipynb, which is listed in the repository's file list above.
+
+## **Detailed Code Explanation**:
+   - open the file code_explanation_breast_cancer_diagnosis.md, which is listed in the repository's file list above for a comprehensive walkthrough.
+
 
 
 ---
